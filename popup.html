@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Injector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            width: 250px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <div>
+            <label for="sourceUrl">源网站URL:</label>
+            <input type="text" id="sourceUrl" name="sourceUrl" value="http://192.168.100.192">
+        </div>
+        <div>
+            <label for="targetUrl">目标网站URL:</label>
+            <input type="text" id="targetUrl" name="targetUrl">
+        </div>
+        <div>
+            <label for="targetUrl">cookie(多个cookie用逗号分隔):</label>
+            <input type="text" id="cookies" name="cookies" value="yht_access_token,wb_at">
+        </div>
+        <div id="tips"></div>
+        <button id="getCookieButton" type="button">Get Cookie</button>
+    </form>
+    <script src="popup.js"></script>
+</body>
+
+</html>
