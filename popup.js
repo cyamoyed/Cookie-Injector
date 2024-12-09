@@ -1,9 +1,28 @@
 
 let sourceUrl = document.querySelector("#sourceUrl");
 let targetUrl = document.querySelector("#targetUrl");
-let tokenStatus = document.querySelector("#tokenStatus");
 let cookies = document.querySelector("#cookies");
 let tip = document.querySelector("#tips");
+
+// 当输入值改变时保存到存储中
+sourceUrl.addEventListener('change', function() {
+    chrome.storage.local.set({ sourceUrl: sourceUrl.value });
+});
+
+targetUrl.addEventListener('change', function() {
+    chrome.storage.local.set({ targetUrl: targetUrl.value });
+});
+
+cookies.addEventListener('change', function() {
+    chrome.storage.local.set({ cookies: cookies.value });
+});
+
+// 页面加载时从存储中获取之前的值
+chrome.storage.local.get(['sourceUrl', 'targetUrl', 'cookies'], function(result) {
+    if (result.sourceUrl) sourceUrl.value = result.sourceUrl;
+    if (result.targetUrl) targetUrl.value = result.targetUrl;
+    if (result.cookies) cookies.value = result.cookies;
+});
 
 chrome.runtime.sendMessage({ action: "getOrigin" }, function (response) {
     console.log(`======获取当前标签页的origin:${response.origin}======`);
